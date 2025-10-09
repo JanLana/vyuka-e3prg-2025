@@ -1,18 +1,17 @@
 package cz.gyarab.prg.e3.s2;
 
-import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
+import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class Sifrovac {
-    public static void main(String[] args) throws IOException, NoSuchPaddingException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws IOException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Scanner scan = new Scanner(System.in);
         String vstup = scan.nextLine();
 
@@ -21,7 +20,7 @@ public class Sifrovac {
 
 
         Cipher cipher = Cipher.getInstance("DES");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
         byte[] out = cipher.doFinal(vstup.getBytes());
 
