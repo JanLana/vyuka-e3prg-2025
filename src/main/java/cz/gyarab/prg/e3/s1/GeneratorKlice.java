@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class GeneratorKlice {
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
         try {
-            var keyGen = KeyPairGenerator.getInstance("EC");
-            keyGen.initialize(256);
+            var keyGen = KeyPairGenerator.getInstance("RSA");
+            keyGen.initialize(512);
 
             //Key secretKey = keyGen.generateKey();
             KeyPair keyPair = keyGen.generateKeyPair();
