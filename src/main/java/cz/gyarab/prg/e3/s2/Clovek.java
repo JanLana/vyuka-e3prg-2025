@@ -24,20 +24,41 @@ public class Clovek {
 
         System.out.println(lidi);
 
-        Connection conn = null;
-        Statement stmt = null;
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:lide.db")) {
+            vytvorTabulku(conn);
 
-        try (Connection conn = DriverManager.getConnection("jdbc: ......", null, null)) {
-            try (var stmt = conn.createStatement()) {
-                String sqlPrikaz = "INSERT INTO clovek (jmeno, prijmeni, rok_narozeni) VALUES ('"
-                        + lidi.get(0).getJmeno() + "', '"
-                        + lidi.get(0).getPrijmeni() + "', " + lidi.get(0).getRokNarozeni() + ")";
-
-                stmt.executeUpdate(sqlPrikaz);
+            for (Clovek c : lidi) {
+                vlozCloveka(c, conn);
             }
         }  catch (SQLException e) {
-            System.out.println("udelal jsem vse co muzu, takze to ignoruju...");
+            System.out.println("udelal jsem vse co muzu, takze to ignoruju, ze\n\t" + e.getMessage());
         }
+    }
 
+    private static void vlozCloveka(Clovek c, Connection conn) throws SQLException {
+        if (existujeClovekDB(c, conn) == false) {
+            String sql2 = "INSERT INTO clovek VALUES ('" + c.getJmeno() + "','" + c.getPrijmeni() + "'," + c.getRokNarozeni() + ")";
+            try (Statement stmt = conn.createStatement()) {
+                stmt.execute(sql2);
+            }
+        }
+    }
+
+    private static boolean existujeClovekDB(Clovek c, Connection conn) {
+
+    }
+
+
+    private static void vytvorTabulku(Connection conn) throws SQLException {
+        String sql = "CREATE TABLE clovek (jmeno INT, prijmeni DATE, rokNarozeni INTEGER)";
+        try (Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            if (e.getMessage().contains("table clovek already exists")) {
+                // uz tabulka existuje, je to ok!
+            } else {
+                throw e;
+            }
+        }
     }
 }

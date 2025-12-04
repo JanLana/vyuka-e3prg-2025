@@ -1,10 +1,7 @@
 package cz.gyarab.prg.e3.s1;
 
 import java.lang.reflect.Array;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +16,17 @@ public class MojeDatabaze {
         System.out.println(lidi);
 
 
-        try (Connection conn = DriverManager.getConnection("jdbc: ......", null, null);
-             Statement stmt = conn.createStatement()) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+            vytvorTabulku(conn, "CREATE TABLE IF NOT EXISTS clovek (jmeno VARCHAR, prijmeni INT, rocnik VARCHAR)");
+
+            for (Clovek c : lidi) {
+                vlozDoTabulkyClovek(c, conn);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        /*
             String sqlPrikaz = "INSERT INTO clovek(jmeno, prijmeni, rocnik) VALUES ('"
                         + lidi.get(0).getJmeno() + "', '"
                         + lidi.get(0).getPrimeni() + "',"
@@ -31,5 +37,45 @@ public class MojeDatabaze {
             System.out.println("Nastala vyjimka");
             throw new RuntimeException(e);
         }
+
+         */
+    }
+
+    private static void vlozDoTabulkyClovek(Clovek c, Connection conn) throws SQLException {
+        if (! existujeClovekVDB(c, conn)) {
+            String sql = "INSERT INTO clovek VALUES ('" + c.getJmeno() + "', '" + c.getPrimeni() + "', " + c.getRocnik() + ")";
+            //System.out.println(sql);
+
+            try (Statement stmt = conn.createStatement()) {
+                stmt.execute(sql);
+            }
+        }
+    }
+
+    private static boolean existujeClovekVDB(Clovek c, Connection conn) throws SQLException {
+        String sql = "SELECT * FROM clovek WHERE  jmeno = '" + c.getJmeno() + "' AND prijmeni = '" + c.getPrimeni() + "'";
+
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+    }
+
+
+    private static void vytvorTabulku(Connection conn, String sql) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } /*catch (SQLException e) {
+            if (e.getMessage().contains("table clovek already exists")) {
+                // vse v poradku
+            } else {
+                throw e;
+            }
+        } */
     }
 }
