@@ -45,7 +45,7 @@ public class Clovek {
     }
 
     private static boolean existujeClovekDB(Clovek c, Connection conn) {
-
+        return false;
     }
 
 
