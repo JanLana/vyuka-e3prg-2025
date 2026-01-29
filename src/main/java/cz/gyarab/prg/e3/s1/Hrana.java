@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Hrana {
-    private final Vrchol vrcholA;
-    private final Vrchol vrcholB;
+    private final Uzel vrcholA;
+    private final Uzel vrcholB;
 }

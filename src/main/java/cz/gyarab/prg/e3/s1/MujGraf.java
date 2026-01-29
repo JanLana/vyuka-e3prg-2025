@@ -20,7 +20,7 @@ public class MujGraf {
         vrcholy.add(new Vrchol("D"));
         vrcholy.add(new Vrchol("E"));
 
-        hrany.add(new Hrana(vrcholA,vrcholB));
+        //hrany.add(new Hrana(vrcholA,vrcholB));
     }
 
     public static void main(String[] args) {
