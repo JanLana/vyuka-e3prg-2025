@@ -25,40 +25,14 @@ public class Clovek {
         System.out.println(lidi);
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:lide.db")) {
-            vytvorTabulku(conn);
+            //vytvorTabulku(conn);
 
             for (Clovek c : lidi) {
-                vlozCloveka(c, conn);
+                //vlozCloveka(c, conn);
             }
         }  catch (SQLException e) {
-            System.out.println("udelal jsem vse co muzu, takze to ignoruju, ze\n\t" + e.getMessage());
+            System.out.println("udelal jsem vse co muzu, takze to ignoruju...");
         }
-    }
 
-    private static void vlozCloveka(Clovek c, Connection conn) throws SQLException {
-        if (existujeClovekDB(c, conn) == false) {
-            String sql2 = "INSERT INTO clovek VALUES ('" + c.getJmeno() + "','" + c.getPrijmeni() + "'," + c.getRokNarozeni() + ")";
-            try (Statement stmt = conn.createStatement()) {
-                stmt.execute(sql2);
-            }
-        }
-    }
-
-    private static boolean existujeClovekDB(Clovek c, Connection conn) {
-        return false;
-    }
-
-
-    private static void vytvorTabulku(Connection conn) throws SQLException {
-        String sql = "CREATE TABLE clovek (jmeno INT, prijmeni DATE, rokNarozeni INTEGER)";
-        try (Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            if (e.getMessage().contains("table clovek already exists")) {
-                // uz tabulka existuje, je to ok!
-            } else {
-                throw e;
-            }
-        }
     }
 }

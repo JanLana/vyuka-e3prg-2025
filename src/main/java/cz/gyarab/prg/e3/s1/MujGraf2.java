@@ -125,11 +125,11 @@ public class MujGraf2 {
         graf.vyrobDomecek();
         //System.out.println(graf);
 
-        Vrchol u1 = graf.vrcholy.get(0);
-        System.out.print("Do hloubky: ");
-        graf.projdiGrafDoHloubky(u1);
-        System.out.print("Do sirky: ");
-        graf.projdiGrafDoSirky(u1);
+        Uzel u1 = graf.uzly.get(0);
+        graf.projdiGraf(u1);
 
+        System.out.println("====");
+        graf.projdiGraf(graf.uzly.get(5));
+        System.out.println(" ====");
     }
 }

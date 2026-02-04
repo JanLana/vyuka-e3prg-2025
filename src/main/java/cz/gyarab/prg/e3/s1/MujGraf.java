@@ -12,13 +12,13 @@ public class MujGraf {
     }
 
     public void vyrobDomecek() {
-        VrcholStary vrcholA =new VrcholStary("A");
-        VrcholStary vrcholB =new VrcholStary("B");
+        VrcholStary vrcholA = new VrcholStary("A",0,0);
+        VrcholStary vrcholB =new VrcholStary("B",0,0);
         vrcholy.add(vrcholA);
         vrcholy.add(vrcholB);
-        vrcholy.add(new VrcholStary("C"));
-        vrcholy.add(new VrcholStary("D"));
-        vrcholy.add(new VrcholStary("E"));
+        vrcholy.add(new VrcholStary("C", 0,0));
+        vrcholy.add(new VrcholStary("D", 0,0));
+        vrcholy.add(new VrcholStary("E", 0,0));
 
         //hrany.add(new Hrana(vrcholA,vrcholB));
     }
