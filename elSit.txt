@@ -1,0 +1,12 @@
+v 1 Orlik
+v 2 Milin
+v 3 Kocin
+v 4 Temelin
+v 5 Dasny
+v 6 Slavetice
+e 1 2
+e 2 3
+e 3 4
+e 3 5
+e 5 6
+e 3 6
