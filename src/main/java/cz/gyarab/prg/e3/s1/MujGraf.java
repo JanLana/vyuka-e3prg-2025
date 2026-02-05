@@ -3,7 +3,7 @@ package cz.gyarab.prg.e3.s1;
 import java.util.ArrayList;
 
 public class MujGraf {
-    ArrayList<Vrchol> vrcholy;
+    ArrayList<VrcholStary> vrcholy;
     ArrayList<Hrana> hrany;
 
     public MujGraf() {
@@ -12,13 +12,13 @@ public class MujGraf {
     }
 
     public void vyrobDomecek() {
-        Vrchol vrcholA =new Vrchol("A");
-        Vrchol vrcholB =new Vrchol("B");
+        VrcholStary vrcholA =new VrcholStary("A");
+        VrcholStary vrcholB =new VrcholStary("B");
         vrcholy.add(vrcholA);
         vrcholy.add(vrcholB);
-        vrcholy.add(new Vrchol("C"));
-        vrcholy.add(new Vrchol("D"));
-        vrcholy.add(new Vrchol("E"));
+        vrcholy.add(new VrcholStary("C"));
+        vrcholy.add(new VrcholStary("D"));
+        vrcholy.add(new VrcholStary("E"));
 
         //hrany.add(new Hrana(vrcholA,vrcholB));
     }

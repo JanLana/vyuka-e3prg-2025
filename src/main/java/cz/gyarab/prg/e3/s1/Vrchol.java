@@ -4,5 +4,12 @@ import lombok.Data;
 
 @Data
 public class Vrchol {
-    private final String jmeno;
+     static int pocitadlo = 1;
+     int id;
+     boolean navstiven = false;
+
+    public Vrchol() {
+        id = pocitadlo;
+        pocitadlo++;
+    }
 }
