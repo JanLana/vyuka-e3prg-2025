@@ -12,7 +12,4 @@ public class Vrchol {
         id = pocitadlo;
         pocitadlo++;
     }
-
-    private final int x;
-    private final int y;
 }

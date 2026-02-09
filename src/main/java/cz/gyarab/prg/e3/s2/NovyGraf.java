@@ -33,7 +33,7 @@ public class NovyGraf {
         }
     }
     
-    public List<NovyVrchol> getVrcholy() {}
+    public List<NovyVrchol> seznamVsechSousedu(NovyVrchol v) { return null; } // TODO
 
     public void projdiDoHloubky(NovyVrchol zacatek) {
         ArrayDeque<NovyVrchol> zasobnik = new ArrayDeque();
