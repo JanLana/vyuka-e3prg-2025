@@ -9,6 +9,15 @@ public class MujGraf2 {
     List<Vrchol> vrcholy = new ArrayList<>();
     List<Hrana> hrany = new ArrayList<>();
 
+    public void pridejVrchol(Vrchol vrchol) {
+        vrcholy.add(vrchol);
+    }
+
+    public void pridejHranu(Vrchol v1, Vrchol v2) {
+        hrany.add(new Hrana(v1,v2));
+    }
+
+
     public void vyrobDomecek() {
         var u1 = new Vrchol();
         var u2 = new Vrchol();

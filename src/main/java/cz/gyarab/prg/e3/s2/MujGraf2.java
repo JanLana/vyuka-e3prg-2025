@@ -8,6 +8,17 @@ public class MujGraf2 {
     List<Vrchol> vrcholy = new LinkedList<>();
     List<Hrana> hrany = new ArrayList<>();
 
+    public void pridejVrchol(Vrchol v) {
+        vrcholy.add(v);
+    }
+
+    public void pridejHranu(Vrchol v1, Vrchol v2) {
+        hrany.add(new Hrana(v1,v2));
+    }
+
+
+
+
     public void vyrobKrabici() {
         var v1 = new Vrchol();
         var v2 = new Vrchol();
