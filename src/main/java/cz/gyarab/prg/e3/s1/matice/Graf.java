@@ -1,16 +1,12 @@
-package cz.gyarab.prg.e3.s1.pisemka;
-
+package cz.gyarab.prg.e3.s1.matice;
 
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Data
-public class MujGraf {
+public class Graf {
     private final List<Vrchol> vrcholy = Arrays.asList(
             new Vrchol("A", 1),
             new Vrchol("B", 2),
@@ -21,14 +17,18 @@ public class MujGraf {
             new Hrana(vrcholy.get(0), vrcholy.get(1)),
             new Hrana(vrcholy.get(1), vrcholy.get(2)));
 
-    public List<Vrchol> sousedi(Vrchol v) {
-        return hrany.stream().map(x -> x.soused(v)).filter(Objects::nonNull).toList();
-    }
 
     public static void main(String[] args) {
-        MujGraf g = new MujGraf();
-        System.out.println(g);
-        g.getVrcholy().forEach(v -> System.out.println("sousedi " + v + ": " + g.sousedi(v)));
+        Graf g = new Graf();
+
+        int size = g.getVrcholy().size();
+        int[][] maticeSouslednosti = new int[size][size];
+
+
+    }
+
+    private static int[][] vytvorPole(int size) {
+        return null;
     }
 
 }
