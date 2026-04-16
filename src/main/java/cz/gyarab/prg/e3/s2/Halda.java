@@ -34,4 +34,14 @@ public class Halda {
 
         pocetPrvku++;
     }
+
+    public void odstranNejmensi() {
+        halda[0] = halda[pocetPrvku-1];
+        int mujIndex = 0;
+        while(true) {
+            int indexLeveho = mujIndex*2 + 1;
+            int indexPravy = mujIndex*2 + 2;
+
+        }
+    }
 }
